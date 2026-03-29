@@ -80,7 +80,9 @@ public class ApartmentSummary extends ApartmentDetails {
         if (remainingBalance == 0) {
             System.out.println("Remaining Balance: FULLY PAID");
         } else {
-            System.out.println("Remaining Balance: Php " + remainingBalance);
+            System.out.println("Balance in rooms only: Php " + remainingBalance);
+            System.out.println("Entire balance Remaining php " + ( Paynow - totalRent));
         }
+
     }
 }
