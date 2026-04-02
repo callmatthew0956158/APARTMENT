@@ -1,9 +1,14 @@
-public class ApartmentSummary extends ApartmentDetails {
+// Summary
+class ApartmentSummary extends ApartmentDetails {
 
     double serviceFee = 500;
     double WifiBill = 1200;
     String electricityBill = "Depends on the bill";
     String waterBill = "Depends on the bill";
+
+    public ApartmentSummary() {
+        super();
+    }
 
     public void displaySummary() {
 
@@ -11,8 +16,9 @@ public class ApartmentSummary extends ApartmentDetails {
             System.out.println("\nSorry Apartment is FULL.");
             return;
         }
-        // Book room
+
         bookRoom();
+
         System.out.println("\n===== RENTAL SUMMARY =====");
         System.out.println("Barangay: " + getBarangayName());
         System.out.println("Apartment Type: " + getApartmentTypeName());
@@ -22,7 +28,6 @@ public class ApartmentSummary extends ApartmentDetails {
         System.out.println("Monthly Rent per Room: Php " + rate);
         System.out.println("Rooms that tenant will rent: " + howManyRooms);
 
-        // Display months info
         if (wantsAdvancePayment && advanceMonths >= months) {
             System.out.println("Paid: " + months + " months (FULLY PAID)");
         } else {
@@ -48,26 +53,24 @@ public class ApartmentSummary extends ApartmentDetails {
         System.out.println("Fix WiFi Bill: Php " + WifiBill);
         System.out.println("==============================");
 
-        //TOTAL CALCULATIONS
-        double totalRent = months * rate * howManyRooms;          // Rent for all rooms
-        double advancePayment = advanceMonths * rate * howManyRooms;  // Advance months payment
-        double mandatoryAdvance = advance * howManyRooms;        // 1 month mandatory advance
-        double totalDeposit = deposit * howManyRooms;            // Deposit for all rooms
-        double totalServiceFee = serviceFee;                     // service fee
+        // ✅ FIXED TOTAL SECTION
+        double totalRent = months * rate * howManyRooms;
+        double advancePayment = advanceMonths * rate * howManyRooms;
+        double mandatoryAdvance = advance * howManyRooms;
+        double totalDeposit = deposit * howManyRooms;
+        double totalServiceFee = serviceFee;
+
         double Paynow;
         double remainingBalance;
 
-        // FULL advance payment
         if (wantsAdvancePayment && advanceMonths >= months) {
             Paynow = totalRent + totalDeposit + totalServiceFee;
             remainingBalance = 0;
 
-        // PARTIAL advance payment
         } else if (wantsAdvancePayment && advanceMonths > 0) {
             Paynow = advancePayment + totalDeposit + totalServiceFee;
             remainingBalance = totalRent - advancePayment;
 
-        // NO advance
         } else {
             Paynow = mandatoryAdvance + totalDeposit + totalServiceFee;
             remainingBalance = totalRent;
@@ -80,9 +83,8 @@ public class ApartmentSummary extends ApartmentDetails {
         if (remainingBalance == 0) {
             System.out.println("Remaining Balance: FULLY PAID");
         } else {
-            System.out.println("Balance in rooms only: Php " + remainingBalance);
-            System.out.println("Entire balance Remaining php " + ( Paynow - totalRent));
+        System.out.println("Balance in rooms only: Php " + remainingBalance);
+        System.out.println("Entire balance Remaining php " + ( Paynow - totalRent));
         }
-
     }
 }

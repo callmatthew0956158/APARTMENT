@@ -1,7 +1,12 @@
-public class ApartmentRooms extends ApartmentPricing {
-    //Ocupied and Avail rooms
-    int[] totalAvailableRooms = {20, 20, 20, 20};
-    int[] occupiedRooms = {15, 10, 11, 8};
+// Rooms
+class ApartmentRooms extends ApartmentPricing {
+
+    protected int[] totalAvailableRooms = {20, 20, 20, 20};
+    protected int[] occupiedRooms = {15, 10, 11, 8};
+
+    public ApartmentRooms() {
+        super();
+    }
 
     public int getAvailableRooms() {
         int index = BarangayChoice - 1;

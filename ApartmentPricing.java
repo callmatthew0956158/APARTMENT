@@ -1,9 +1,14 @@
-public class ApartmentPricing extends ApartmentBooking {
+// Pricing
+class ApartmentPricing extends ApartmentBooking {
 
-    double rate;
-    double Monthspay;
-    double advance; // 1 month mandatory advance
-    double deposit;
+    protected double rate;
+    protected double Monthspay;
+    protected double advance;
+    protected double deposit;
+
+    public ApartmentPricing() {
+        super();
+    }
 
     public void setPricesApart() {
         if (apartmentType == 1) 
@@ -13,23 +18,18 @@ public class ApartmentPricing extends ApartmentBooking {
         else if (apartmentType == 3) 
             rate = 8500;
 
-      
-       // Base rent already includes full stay
         Monthspay = months * rate;
 
-    // Optional advance months only count if less than months
-    if (wantsAdvancePayment && advanceMonths < months) {
-        Monthspay += advanceMonths * rate;
-    }
+        if (wantsAdvancePayment && advanceMonths < months) {
+            Monthspay += advanceMonths * rate;
+        }
 
-    // Mandatory advance
-    if(wantsAdvancePayment && advanceMonths >= months) {
-        advance = 0; 
-    }else {
-        advance = rate; 
-    }
+        if (wantsAdvancePayment && advanceMonths >= months) {
+            advance = 0;
+        } else {
+            advance = rate;
+        }
 
-    // Deposit and service fee stay
-    deposit = rate;
+        deposit = rate;
     }
 }

@@ -1,5 +1,9 @@
-// ApartmentDetails class
+// Details
 class ApartmentDetails extends ApartmentRooms {
+
+    public ApartmentDetails() {
+        super();
+    }
 
     public String getBarangayName() {
         if (BarangayChoice == 1)

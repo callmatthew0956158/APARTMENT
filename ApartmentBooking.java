@@ -1,18 +1,23 @@
 import java.util.Scanner;
-// Parent class
-public class ApartmentBooking {
-    String name;
-    String ContactNum;
-    int BarangayChoice;
-    int apartmentType;
-    int months;
-    int numberOfPeople;
-    boolean valid = false;
-    int howManyRooms;
-    int advanceMonths;
-    boolean wantsAdvancePayment;
 
-    Scanner input = new Scanner(System.in);
+// Parent class
+class ApartmentBooking {
+    protected String name;
+    protected String ContactNum;
+    protected int BarangayChoice;
+    protected int apartmentType;
+    protected int months;
+    protected int numberOfPeople;
+    protected boolean valid = false;
+    protected int howManyRooms;
+    protected int advanceMonths;
+    protected boolean wantsAdvancePayment;
+
+    protected Scanner input = new Scanner(System.in);
+
+    public ApartmentBooking() {
+        super();
+    }
 
     public void fillUpForm() {
 
@@ -58,6 +63,7 @@ public class ApartmentBooking {
             if (valid) break;
             System.out.println("Too many people. Try again.");
         }
+
         System.out.print("How many rooms you want to rent?: ");
         howManyRooms = input.nextInt();
 
@@ -72,17 +78,18 @@ public class ApartmentBooking {
         if (choiceAdvance.equalsIgnoreCase("yes")) {
             wantsAdvancePayment = true;
 
-        System.out.print("Enter number of months to advance: ");
-        advanceMonths = input.nextInt();
+            System.out.print("Enter number of months to advance: ");
+            advanceMonths = input.nextInt();
 
-        if (advanceMonths > months) {
-            advanceMonths = months;
-    }
+            if (advanceMonths > months) {
+                advanceMonths = months;
+            }
         } else {
-        wantsAdvancePayment = false;
-        advanceMonths = 0;
+            wantsAdvancePayment = false;
+            advanceMonths = 0;
+        }
     }
-     }   
+
     public void CostumerInfodisplay() {
         System.out.println("\n=== CUSTOMER INFORMATION ===");
         System.out.println("Full Name: " + name);
