@@ -14,12 +14,25 @@ class ApartmentRooms extends ApartmentPricing {
     }
 
     public void bookRoom() {
-        int index = BarangayChoice - 1;
+    int index = BarangayChoice - 1;
+    int availableRooms = totalAvailableRooms[index] - occupiedRooms[index];
 
+    // requested rooms exceed available
+    if (howManyRooms > availableRooms) {
+        System.out.println("\nERROR: Not enough available rooms!");
+        System.out.println("Available rooms: " + availableRooms);
+        System.out.println("You requested: " + howManyRooms);
+        System.out.println("Please try again.\n");
+        return;
+    }
+
+    // valid, book rooms
+    for (int i = 0; i < howManyRooms; i++) {
         if (occupiedRooms[index] < totalAvailableRooms[index]) {
             occupiedRooms[index]++;
         }
     }
+}
 
     public void displayAllBarangayRooms() {
         System.out.println("\n=== AVAILABLE ROOMS PER BARANGAY ===");

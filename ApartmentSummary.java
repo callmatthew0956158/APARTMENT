@@ -15,7 +15,14 @@ class ApartmentSummary extends ApartmentDetails {
         if (getAvailableRooms() == 0) {
             System.out.println("\nSorry Apartment is FULL.");
             return;
+            
         }
+        if (howManyRooms > getAvailableRooms()) {
+    System.out.println("\nNot enough rooms available!");
+    System.out.println("Available: " + getAvailableRooms());
+    System.out.println("Requested: " + howManyRooms);
+    return;
+}
 
         bookRoom();
 
@@ -44,7 +51,7 @@ class ApartmentSummary extends ApartmentDetails {
         }
         System.out.println("1 Month Advance: Php " + (advance * howManyRooms));
         System.out.println("Deposit: Php " + (deposit * howManyRooms));
-        System.out.println("Service Fee: Php " + serviceFee);
+        System.out.println("Service Fee: Php " + (serviceFee * howManyRooms));
         System.out.println("--------------------------------");
 
         System.out.println("\n=== UTILITIES ===");
