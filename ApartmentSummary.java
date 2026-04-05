@@ -53,7 +53,6 @@ class ApartmentSummary extends ApartmentDetails {
         System.out.println("Fix WiFi Bill: Php " + WifiBill);
         System.out.println("==============================");
 
-        // ✅ FIXED TOTAL SECTION
         double totalRent = months * rate * howManyRooms;
         double advancePayment = advanceMonths * rate * howManyRooms;
         double mandatoryAdvance = advance * howManyRooms;
