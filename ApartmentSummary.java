@@ -64,7 +64,7 @@ class ApartmentSummary extends ApartmentDetails {
         double advancePayment = advanceMonths * rate * howManyRooms;
         double mandatoryAdvance = advance * howManyRooms;
         double totalDeposit = deposit * howManyRooms;
-        double totalServiceFee = serviceFee;
+        double totalServiceFee = serviceFee * howManyRooms;
 
         double Paynow;
         double remainingBalance;
